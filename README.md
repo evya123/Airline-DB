@@ -28,6 +28,6 @@ Version # : v1.0
 
 ## Authors
 
-* **Evyatar Shtern** - *Initial work* - [PurpleBooth](https://github.com/evya123)
+* **Evyatar Shtern** - *Initial work* - [Evyatar](https://github.com/evya123)
 ## Date
 * **12/03/18**
