@@ -22,14 +22,19 @@ void ReservationFactory::setM_flight(MyFlight *flight) {
 }
 
 MyReservation *ReservationFactory::create() {
-    MyReservation *ret = new MyReservation();
-    ret->setM_id(m_idFactory.createID(RID));
-    ret->setM_class(m_cls);
-    ret->setM_maxBaggage(m_max_baggage);
-    ret->setM_customer(m_customer);
-    ret->setM_flight(m_flight);
-    listToFree.push_back(ret);
-    return ret;
+    auto *ret = new MyReservation();
+    try {
+        ret->setM_id(m_idFactory.createID(RID));
+        ret->setM_class(m_cls);
+        ret->setM_maxBaggage(m_max_baggage);
+        ret->setM_customer(m_customer);
+        ret->setM_flight(m_flight);
+        listToFree.push_back(ret);
+        return ret;
+    } catch (...) {
+        delete (ret);
+        throw;
+    }
 }
 
 ReservationFactory::~ReservationFactory() {

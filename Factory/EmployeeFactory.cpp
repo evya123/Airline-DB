@@ -21,14 +21,20 @@ void EmployeeFactory::setM_employer(Employee *e) {
 }
 
 MyEmployee *EmployeeFactory::create() {
-    MyEmployee *ret = new MyEmployee();
-    ret->setTitle(m_title);
-    ret->set_Date(m_date);
-    ret->set_seniority(m_seniority);
-    ret->set_ID(m_idFactory.createID(EID));
-    ret->set_Employer(m_employer);
-    listToFree.push_back(ret);
-    return ret;
+    auto *ret = new MyEmployee();
+    try {
+        ret->setTitle(m_title);
+        ret->set_Date(m_date);
+        ret->set_seniority(m_seniority);
+        ret->set_ID(m_idFactory.createID(EID));
+        ret->set_Employer(m_employer);
+        listToFree.push_back(ret);
+        return ret;
+    } catch (...) {
+        delete (ret);
+        throw;
+    }
+
 }
 
 EmployeeFactory::~EmployeeFactory() {

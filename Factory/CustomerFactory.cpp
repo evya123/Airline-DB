@@ -10,12 +10,18 @@ void CustomerFactory::setPriority(int priority) {
 }
 
 MyCustomer *CustomerFactory::create() {
-    MyCustomer *ret = new MyCustomer();
-    ret->setM_ID(m_idFactory.createID(CID));
-    ret->setM_fullName(m_full_name);
-    ret->setM_priority(m_priority);
-    listToFree.push_back(ret);
-    return ret;
+    auto *ret = new MyCustomer();
+    try {
+        ret->setM_ID(m_idFactory.createID(CID));
+        ret->setM_fullName(m_full_name);
+        ret->setM_priority(m_priority);
+        listToFree.push_back(ret);
+        return ret;
+    } catch (...) {
+        delete (ret);
+        throw;
+    }
+
 }
 
 CustomerFactory::~CustomerFactory() {

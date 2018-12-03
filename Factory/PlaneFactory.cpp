@@ -17,14 +17,20 @@ void PlaneFactory::setMax_passangers(const map<Classes, int> &max_passangers) {
 }
 
 MyPlane *PlaneFactory::create() {
-    MyPlane *ret = new MyPlane();
-    ret->setM_ID(m_idFactory.createID(PID));
-    ret->setM_modelNumber(m_model_number);
-    ret->setM_maxEconomyClass(m_max_passangers.at(SECOND_CLASS));
-    ret->setM_maxFirstClass(m_max_passangers.at(FIRST_CLASS));
-    ret->setM_crewNeeded(m_crew_needed);
-    listToFree.push_back(ret);
-    return ret;
+    auto *ret = new MyPlane();
+    try {
+        ret->setM_ID(m_idFactory.createID(PID));
+        ret->setM_modelNumber(m_model_number);
+        ret->setM_maxEconomyClass(m_max_passangers.at(SECOND_CLASS));
+        ret->setM_maxFirstClass(m_max_passangers.at(FIRST_CLASS));
+        ret->setM_crewNeeded(m_crew_needed);
+        listToFree.push_back(ret);
+        return ret;
+
+    } catch (...) {
+        delete (ret);
+        throw;
+    }
 }
 
 PlaneFactory::~PlaneFactory() {

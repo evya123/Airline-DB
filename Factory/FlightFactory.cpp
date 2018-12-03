@@ -22,15 +22,21 @@ void FlightFactory::setM_date(const Date &date) {
 }
 
 MyFlight *FlightFactory::create() {
-    MyFlight *ret = new MyFlight();
-    ret->setM_currentCrew(m_crewForFlight);
-    ret->setM_src(m_src);
-    ret->setM_dst(m_dst);
-    ret->setM_flightDate(m_date);
-    ret->setM_ID(m_idFactory.createID(FID));
-    ret->setM_plane(dynamic_cast<MyPlane *>(m_plane));
-    listToFree.push_back(ret);
-    return ret;
+    auto *ret = new MyFlight();
+    try {
+        ret->setM_currentCrew(m_crewForFlight);
+        ret->setM_src(m_src);
+        ret->setM_dst(m_dst);
+        ret->setM_flightDate(m_date);
+        ret->setM_ID(m_idFactory.createID(FID));
+        ret->setM_plane(dynamic_cast<MyPlane *>(m_plane));
+        listToFree.push_back(ret);
+        return ret;
+    } catch (...) {
+        delete (ret);
+        throw;
+    }
+
 }
 
 void FlightFactory::setCrewForFlight(const list<Employee *> &crewForFlight) {
