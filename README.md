@@ -16,7 +16,7 @@ Currently, no deleteion, still developing this function.
 # Known bugs:
 1) After one test, the output file are created fine. On the seconed run there is a bug
 loading crew members for a flight.
-2) Becasue of dynamic cast while creating customer, there is a loss of bytes.
+2) ~~Becasue of dynamic cast while creating customer, there is a loss of bytes.~~
 
 ### Installing
 
