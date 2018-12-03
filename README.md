@@ -13,7 +13,7 @@ Now you have the option to add any of the folowing object :
 5) Reservation
  
 Currently, no deleteion, still developing this function. 
-Known bugs:
+# Known bugs:
 1) After one test, the output file are created fine. On the seconed run there is a bug
 loading crew members for a flight.
 2) Becasue of dynamic cast while creating customer, there is a loss of bytes.
