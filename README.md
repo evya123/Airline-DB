@@ -4,7 +4,7 @@ C++ based project, that mimic a real airline DB.
 
 ## Getting Started
 
-In order to use the program, compile using g++ (c++1y or greater). 
+In order to use the program, compile using g++ (c++1y or lower). 
 Now you have the option to add any of the folowing object :
 1) Employee
 2) Plane
